@@ -50,7 +50,13 @@ class Rectangle:
 
     #setting the get_amount_inside method
     def get_amount_inside(self,shape):
-        pass
+        self.shape = shape
+        if self.shape == shape:
+            num_of_shape = self.get_area()/(self.width * self.width)
+            return num_of_shape
+        else:
+            num_of_shape = self.get_area()/(self.width * self.height)
+            return num_of_shape
 
     def __str__(self) -> str:
         result = f"Rectangel(width={self.width},height={self.height})"
@@ -62,16 +68,19 @@ class Square(Rectangle):
     def __init__(self,length, width=0, height=0) -> None:
         super().__init__(width, height)
         self.length = length
-        self.side = 0
+        
     
     #get_area method from Rectangle
     def get_area(self):
         return self.length **2
     
     #setting the set_side method
-    def set_side(self,side):
-        self.side += side
-    
+    def set_side(self,side=None):
+        if side != None:
+            self.length = side
+            return side
+        else:
+           return self.length
     #setting the idagonal
     def get_diagonal(self):
         diagonal = ((self.length ** 2 + self.length ** 2) ** 0.5)
@@ -84,8 +93,9 @@ class Square(Rectangle):
     #getting the picture
     def get_picture(self):
         length = "*" 
-        side = self.side
+        side = self.length
         breath = side
+    
         
         while breath !=0:
             if self.height > 50 or self.width >50:
@@ -95,18 +105,24 @@ class Square(Rectangle):
                 c = length * side
                 breath -=1
                 print(c)
+                
+                
     
 
-c = Rectangle(10,5)
-print(c.get_area())
-c.set_height(3)
-print(c.get_perimeter())
-print(c)
-c.get_picture()
+rect = Rectangle(10, 5)
+print(rect.get_area())
+rect.set_height(3)
+print(rect.get_perimeter())
+print(rect)
+rect.get_picture()
 
-s = Square(9)
-print(s.get_area())
-print(s.get_diagonal())
-print(s)
-s.set_side(4)
-s.get_picture()
+sq = Square(9)
+print(sq.get_area())
+sq.set_side(4)
+print(sq.get_diagonal())
+print(sq)
+print(sq.get_picture())
+
+rect.set_height(8)
+rect.set_width(16)
+print(rect.get_amount_inside(sq))
