@@ -38,35 +38,30 @@ class Rectangle:
     def get_picture(self):
         length = "*" 
         breath = self.height
+        picture = []
         
         while breath !=0:
             if self.height > 50 or self.width >50:
-                print("Too big for picture.")
-                break
+                return "Too big for picture."
             else:
                 c = length * self.width
+                picture.append(c)
                 breath -=1
-                print(c)
+        return "\n".join(picture)+"\n"
 
     #setting the get_amount_inside method
     def get_amount_inside(self,shape):
-        self.shape = shape
-        if self.shape == shape:
-            num_of_shape = self.get_area()/(self.width * self.width)
-            return num_of_shape
-        else:
-            num_of_shape = self.get_area()/(self.width * self.height)
-            return num_of_shape
+        return self.get_area()// shape.get_area()
 
     def __str__(self) -> str:
-        result = f"Rectangel(width={self.width},height={self.height})"
+        result = f"Rectangle(width={self.width}, height={self.height})"
         return result
 
 #setting the squre class
 class Square(Rectangle):
     #defining the contstructor
-    def __init__(self,length, width=0, height=0) -> None:
-        super().__init__(width, height)
+    def __init__(self,length) -> None:
+        super().__init__(width=length, height=length)
         self.length = length
         
     
@@ -87,7 +82,7 @@ class Square(Rectangle):
         return diagonal
     
     def __str__(self) -> str:
-        result = f"Square(side={self.length})"
+        result = f"Square(side={self.width})"
         return result
     
     #getting the picture
@@ -95,36 +90,41 @@ class Square(Rectangle):
         length = "*" 
         side = self.length
         breath = side
-    
+        picture = []
         
         while breath !=0:
             if self.height > 50 or self.width >50:
-                print("Too big for picture.")
-                break
+                return "Too big for picture."
+                
             else:
                 c = length * side
+                picture.append(c)
                 breath -=1
-                print(c)
+        return "\n".join(picture)+"\n"
                 
 if __name__ == "__main__":            
     
 
-    rect = Rectangle(10, 5)
-    print(rect.get_area())
-    rect.set_height(3)
-    print(rect.get_perimeter())
-    print(rect)
-    rect.get_picture()
+    # rect = Rectangle(10, 5)
+    # print(rect.get_area())
+    # rect.set_height(3)
+    # print(rect.get_perimeter())
+    # print(rect)
+    # print(rect.get_picture())
 
-    sq = Square(9)
-    print(sq.get_area())
-    sq.set_side(4)
-    print(sq.get_diagonal())
-    print(sq)
-    print(sq.get_picture())
+    rect = Rectangle(3, 6)
+    sq = Square(5)
 
+    # print("RECTANGLE ",rect.get_perimeter())# expected = 18
+    # print("SQUARE", sq.get_perimeter())# expected = 20
+
+    rect.set_width(7)
     rect.set_height(8)
-    rect.set_width(16)
-    print(rect.get_amount_inside(sq))
+    sq.set_side(2)
+    print(rect)# "Rectangle(width=7, height=8)"
+    print(sq)#"Square(side=2)"
+    sq.set_width(4)
+    print(sq)#"Square(side=4)"
+      
 
 
