@@ -25,3 +25,7 @@ Additionally, the `set_width` and `set_height` methods on the Square class shoul
 
 ## That code should return:
 !["scientific"](./Scientific_Computing1.png)
+
+
+## Test Passed:
+!["scientific"](./test_passed.png)
