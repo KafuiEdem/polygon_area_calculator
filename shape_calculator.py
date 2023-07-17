@@ -73,11 +73,7 @@ class Square(Rectangle):
     def set_side(self,side=None):
         self.width = side
         self.height = side
-        # if side != None:
-        #     self.length = side
-        #     return side
-        # else:
-        #    return self.length
+    
     #setting the idagonal
     def get_diagonal(self):
         diagonal = ((self.length ** 2 + self.length ** 2) ** 0.5)
